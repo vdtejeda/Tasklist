@@ -1,0 +1,18 @@
+%div{"data-role" => "content"}
+  = form_for(@task) do |f|
+    - if task.errors.any?
+      #error_explantion
+        %h2
+          = pluralize(@task.errors.count, "error")
+          prohobited this task to be saved:
+        %ul
+          - @task.errors.full_messages.each do |msg|
+            %li= msg
+
+    .field
+      = f.label :content
+      %br
+      = f.text_field :content
+    .actions
+      = f.submit
+      
