@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have valid factory" do
+      FactoryGirl.build(:task).should be_valid
+  end
+
+  it "should require a username" do
+      FactoryGirl.build(:task, :content => "").should_not be_valid
+  end
 end

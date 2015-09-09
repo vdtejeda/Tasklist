@@ -17,9 +17,12 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  require 'factory_girl_rails'
+  config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
 
   config.before(:suite) do
@@ -33,7 +36,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods

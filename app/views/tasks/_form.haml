@@ -1,6 +1,6 @@
 %div{"data-role" => "content"}
   = form_for(@task) do |f|
-    - if task.errors.any?
+    - if @task.errors.any?
       #error_explantion
         %h2
           = pluralize(@task.errors.count, "error")
@@ -15,4 +15,3 @@
       = f.text_field :content
     .actions
       = f.submit
-      

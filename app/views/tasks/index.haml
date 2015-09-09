@@ -1,9 +1,9 @@
 %div{"data-role" => "header"}
   %h1
-    My Task
+    My Tasks
 %div{"data-role" => "content"}
   %ol{"data-role" => "listview"}
-    - task.each do |task|
+    - @tasks.each do |task|
       %li
         %h2= task.content
       = link_to "Complete", task, method: "delete", "data-role" => "button", "data-inline" => "true"
